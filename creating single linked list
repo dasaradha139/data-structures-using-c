@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+	int n;
+	struct node *link;
+};
+struct node *new_node()
+{
+	struct node *ptr;
+	ptr=(struct node *)malloc(sizeof(struct node));
+    scanf("%d",&(ptr->n));
+    ptr->link=NULL;
+    return ptr;
+}
+
+void main()
+{
+	struct node *head;
+	head=malloc(sizeof(struct node));
+	head->n=10;
+	head->link=new_node();
+	head->link->link=new_node();
+    printf("%d %d %d",head->n,head->link->n,head->link->link->n);
+}
