@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+	int n;
+	struct node *link;
+};
+struct node *head;
+struct node *new_node()
+{
+	struct node *ptr;
+	ptr=(struct node *)malloc(sizeof(struct node));
+    scanf("%d",&(ptr->n));
+    ptr->link=NULL;
+    return ptr;
+}
+struct node *insert_end()
+{
+	struct node *ptr;
+	ptr=head;
+    while(ptr==NULL)
+   {
+	ptr=ptr->link;   
+   }
+    ptr=new_node();
+}
+void main()
+{
+	head=malloc(sizeof(struct node));
+	head->n=10;
+	head->link=new_node();
+	head->link->link=new_node();
+	insert_end();
+}
