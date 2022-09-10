@@ -7,27 +7,44 @@ struct node{
 struct node *head;
 struct node *new_node()
 {
-	struct node *ptr;
-	ptr=(struct node *)malloc(sizeof(struct node));
-    scanf("%d",&(ptr->n));
-    ptr->link=NULL;
-    return ptr;
+   struct node *ptr=(struct node*)malloc(sizeof(struct node));
+   scanf("%d",&ptr->n);
+   ptr->link=NULL;
+   return ptr;
 }
-struct node *insert_end()
+void display()
 {
 	struct node *ptr;
 	ptr=head;
-    while(ptr==NULL)
-   {
-	ptr=ptr->link;   
-   }
-    ptr=new_node();
+	while(ptr!=NULL)
+	{
+		printf("%d\t",ptr->n);
+		ptr=ptr->link;
+	}
 }
+void insert_last(struct node *ptr)
+{
+	
+	while(ptr!=NULL)
+	{
+		ptr=ptr->link;
+	}
+	printf("insert at last:");
+    ptr->link=new_node();
+}
+struct node *insert_head()
+{
+	struct node *ptr=new_node();
+	ptr->link=head;
+	head=ptr;
+}
+
 void main()
 {
-	head=malloc(sizeof(struct node));
-	head->n=10;
+	head=new_node();
 	head->link=new_node();
 	head->link->link=new_node();
-	insert_end();
+	insert_head();
+	insert_last(head);
+	display();
 }
